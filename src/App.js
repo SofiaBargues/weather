@@ -121,16 +121,53 @@ const App = () => {
             </div>
           </div>
           {/* card bottom */}
-          <div>
-            <div>
-              <div>
+          <div className="max-w-[378px] mx-auto flex flex-col gap-6">
+            <div className="flex justify-between">
+              <div className="flex items-center gap-x-2">
                 {/* icon */}
-                <div>
+                <div className="text-[20px]">
                   <BsEye />
                 </div>
                 <div>
                   Visibility{" "}
                   <span className="ml-2">{data.visibility / 1000} km</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-x-2">
+                {/* icon */}
+                <div className="text-[20px]">
+                  <BsThermometer />
+                </div>
+                <div className="flex">
+                  Feels like
+                  <span className="flex ml-2">
+                    {parseInt(data.main.feels_like)}{" "}
+                    <TbTemperatureCelsius></TbTemperatureCelsius>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-between">
+              <div className="flex items-center gap-x-2">
+                {/* icon */}
+                <div className="text-[20px]">
+                  <BsWater />
+                </div>
+                <div>
+                  Humidity
+                  <span className="ml-2">{data.main.humidity} %</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-x-2">
+                {/* icon */}
+                <div className="text-[20px]">
+                  <BsWind />
+                </div>
+                <div className="flex">
+                  Wind
+                  <span className="ml-2">{data.wind.speed} m/ s</span>
                 </div>
               </div>
             </div>
