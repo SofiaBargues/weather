@@ -29,7 +29,7 @@ const App = () => {
   const [location, setLocation] = useState("Bucharest");
 
   useEffect(() => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIkey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`;
 
     axios.get(url).then((res) => {
       setData(res.data);
@@ -104,14 +104,37 @@ const App = () => {
           <div>
             {/* card body */}
             <div className="my-20">
-              <div>
+              <div className="flex justify-center items-center">
                 {/* temp */}
-                <div>{parseInt(data.main.temp)}</div>
+                <div className="text-[144px] leading-none font-light">
+                  {parseInt(data.main.temp)}
+                </div>
+                {/* celcius icon*/}
+                <div className="text-4xl">
+                  <TbTemperatureCelsius />
+                </div>
+              </div>
+              {/* weather description */}
+              <div className="capitalize text-center">
+                {data.weather[0].description}{" "}
               </div>
             </div>
           </div>
           {/* card bottom */}
-          <div>card bottom</div>
+          <div>
+            <div>
+              <div>
+                {/* icon */}
+                <div>
+                  <BsEye />
+                </div>
+                <div>
+                  Visibility{" "}
+                  <span className="ml-2">{data.visibility / 1000} km</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
